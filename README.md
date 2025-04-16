@@ -1,8 +1,9 @@
-#Constituent Management API
+# Constituent Management API
 
 ## Description
 
-I used [Nest](https://github.com/nestjs/nest) and [Prisma](https://www.prisma.io) to build this API to interact with constituent data.
+I used [Nest](https://github.com/nestjs/nest) and [Prisma](https://www.prisma.io) to build this API to interact with constituent data. Pretty much all of the relevant code 
+is in `src/constituent`, except for the data model which is defined in `prisma/schema.prisma`. The data is stored in an SQLite database file found in `prisma/dev.db`.
 
 ## Project setup
 
@@ -15,7 +16,6 @@ $ npm install
 ## Compile and run the project
 
 ```bash
-# development
 $ npm run start
 ```
 
