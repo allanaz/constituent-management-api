@@ -10,6 +10,7 @@ import {
     ClassSerializerInterceptor,
     ParseIntPipe,
     Res,
+    Query,
   } from '@nestjs/common';
   import { Response } from 'express';
   import { stringify } from 'csv-stringify';
@@ -50,9 +51,14 @@ import {
     }
   
     @Get('export/csv')
-    async exportToCsv(@Res() res: Response) {
+    async exportToCsv(@Query('startDate') startDateString: string, @Res() res: Response) {
+        
+      const filterDate = startDateString ? new Date(startDateString): undefined;
+      if (filterDate !== undefined && isNaN(filterDate.getDate())){
+        throw new Error('Invalid Date Format');
+      }
       // Get all constituents
-      const constituents = await this.constituentService.exportConstituents();
+      const constituents = await this.constituentService.exportConstituents(filterDate);
       
       // Process data for CSV export - only include preferred name and address
       const csvData = constituents.map(constituent => {

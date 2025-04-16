@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { CreateConstituentDto, UpdateConstituentDto } from './constituent.dto';
+import { start } from 'repl';
 
 @Injectable()
 export class ConstituentService {
@@ -35,12 +36,20 @@ export class ConstituentService {
     });
   }
 
-  async findAll() {
+  async findAll(startDate?: Date) {
     return this.prisma.person.findMany({
       include: {
         names: true,
         addresses: true,
       },
+      where: {
+        dateCreated: {
+            gte: startDate
+        }
+      },
+      orderBy: {
+        dateCreated: 'asc'
+      }
     });
   }
 
@@ -138,13 +147,21 @@ export class ConstituentService {
     }
   }
   
-  async exportConstituents() {
+  async exportConstituents(startDate?: Date) {
     // Get all constituents with their names and addresses
     return this.prisma.person.findMany({
       include: {
         names: true,
         addresses: true,
       },
+      where: {
+        dateCreated: {
+            gte: startDate
+        }
+      },
+      orderBy: {
+        dateCreated: 'asc'
+      }
     });
   }
   
