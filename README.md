@@ -17,6 +17,8 @@ $ npm install
 $ npm run start
 ```
 
+The API will then be available on `localhost:3000` I recommend PostMan to interact with it. 
+
 ## Endpoints and Examples
 
 I've setup a few endpoints for the features outlined in the problem statement. 
