@@ -6,6 +6,8 @@ I used [Nest](https://github.com/nestjs/nest) and [Prisma](https://www.prisma.io
 
 ## Project setup
 
+I used Node.js v22.14.0 for this project. 
+
 ```bash
 $ npm install
 ```
@@ -17,7 +19,7 @@ $ npm install
 $ npm run start
 ```
 
-The API will then be available on `localhost:3000` I recommend PostMan to interact with it. 
+The API will then be available on `localhost:3000` I recommend Postman to interact with it. 
 
 ## Endpoints and Examples
 
